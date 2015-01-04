@@ -18,22 +18,22 @@ void launch_effect (int effect)
   {
     // plane boing effect
     case 0:
-      effect_sine(250,150);
+      effect_sine(75,150);
       fill(0x00);
       break;
 
     case 1:
       for (i=0; i<2; i++)
       {
-        effect_planboing (AXIS_Z, 500);
-        effect_planboing (AXIS_Z, 500);
-        effect_planboing (AXIS_Z, 500);
-        effect_planboing (AXIS_X, 500);
-        effect_planboing (AXIS_X, 500);
-        effect_planboing (AXIS_X, 500);
-        effect_planboing (AXIS_Y, 500);
-        effect_planboing (AXIS_Y, 500);
-        effect_planboing (AXIS_Y, 500);
+        effect_planboing (AXIS_Z, 100);
+        effect_planboing (AXIS_Z, 100);
+        effect_planboing (AXIS_Z, 100);
+        effect_planboing (AXIS_X, 100);
+        effect_planboing (AXIS_X, 100);
+        effect_planboing (AXIS_X, 100);
+        effect_planboing (AXIS_Y, 100);
+        effect_planboing (AXIS_Y, 100);
+        effect_planboing (AXIS_Y, 100);
       }
       fill(0x00);
       break;
@@ -63,12 +63,12 @@ void launch_effect (int effect)
       break;
 
     case 5:
-      effect_sendvoxels_rand_z(100,100,200); // parameters: (int iterations, int delay, int wait)
+      effect_sendvoxels_rand_z(100,50,200); // parameters: (int iterations, int delay, int wait)
       fill(0x00);
       break;
 
     case 6:
-      effect_rain(10);
+      effect_rain(200);
       fill(0x00);
       break;
 
@@ -78,13 +78,13 @@ void launch_effect (int effect)
       break;
 
    case 8:
-	  effect_sidewaves(300,250);
+	  // TODO sidewaves doesn't work I'm afraid.
+	  //effect_sidewaves(300,250);
       //fill(0x00);
       break;
 
-    // In case the effect number is out of range:
+    // In case the effect number is out of range do nothing
     default:
-      // effect_stringfly2("FAIL");
       break;
   }
 }
