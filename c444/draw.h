@@ -130,6 +130,7 @@ float distance2d (float x1, float y1, float x2, float y2);
 float distance3d (float x1, float y1, float z1, float x2, float y2, float z2);
 double map(double in, double inMin, double inMax, double outMin, double outMax);
 void sine (int iterations, int delay);
-
+void setColumn(int x, int y);
+void clrColumn(int x, int y);
 
 #endif /* DRAW_H_ */

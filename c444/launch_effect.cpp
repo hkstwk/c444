@@ -78,9 +78,8 @@ void launch_effect (int effect)
       break;
 
    case 8:
-	  // TODO sidewaves doesn't work I'm afraid.
-	  //effect_sidewaves(300,250);
-      //fill(0x00);
+	  effect_light_column(200,50);
+      fill(0x00);
       break;
 
     // In case the effect number is out of range do nothing
