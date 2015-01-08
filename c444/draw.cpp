@@ -785,3 +785,21 @@ double map(double in, double inMin, double inMax, double outMin, double outMax)
 	out = (in-inMin)/(inMax-inMin)*(outMax-outMin) + outMin;
 	return out;
 }
+
+void setColumn(int x, int y)
+{
+	for (int z=0; z <= 3; z++)
+	{
+		setvoxel(x,y,z);
+	}
+
+}
+
+void clrColumn(int x, int y)
+{
+	for (int z=0; z <= 3; z++)
+	{
+		clrvoxel(x,y,z);
+	}
+
+}

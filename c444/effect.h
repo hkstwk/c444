@@ -32,6 +32,6 @@ void effect_box_woopwoop (int delay, int grow);
 void effect_sendvoxel_z (unsigned char x, unsigned char y, unsigned char z, int delay);
 void effect_sendvoxels_rand_z (int iterations, int delay, int wait);
 void effect_sendplane_rand_z (unsigned char z, int delay, int wait);
-void effect_light_column(int iterations, int ms);
+void effect_rotating_column(int iterations, int ms, int direction);
 
 #endif /* EFFECT_H_ */

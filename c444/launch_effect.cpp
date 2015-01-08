@@ -78,7 +78,10 @@ void launch_effect (int effect)
       break;
 
    case 8:
-	  effect_light_column(200,50);
+	  for (int i=0;i<10;i++){
+		  effect_rotating_column(1,25,COUNTERCLOCKWISE);
+		  effect_rotating_column(1,25,CLOCKWISE);
+	  }
       fill(0x00);
       break;
 
