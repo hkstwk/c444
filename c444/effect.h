@@ -33,5 +33,6 @@ void effect_sendvoxel_z (unsigned char x, unsigned char y, unsigned char z, int 
 void effect_sendvoxels_rand_z (int iterations, int delay, int wait);
 void effect_sendplane_rand_z (unsigned char z, int delay, int wait);
 void effect_rotating_column(int iterations, int ms, int direction);
+void effect_spinning(int iterations, int ms, int direction);
 
 #endif /* EFFECT_H_ */

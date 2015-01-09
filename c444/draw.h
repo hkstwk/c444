@@ -28,6 +28,8 @@
 #define PLANE_X2 0b01000100
 #define PLANE_X3 0b10001000
 
+extern int spinArray[6][2];
+
 #define CLOCKWISE 0x00
 #define COUNTERCLOCKWISE 0x01
 
@@ -134,5 +136,7 @@ double map(double in, double inMin, double inMax, double outMin, double outMax);
 void sine (int iterations, int delay);
 void setColumn(int x, int y);
 void clrColumn(int x, int y);
+
+void setDiagonal (int step);
 
 #endif /* DRAW_H_ */

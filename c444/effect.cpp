@@ -396,3 +396,18 @@ void effect_rotating_column(int iterations, int ms, int direction)
 		}
 	}
 }
+
+void effect_spinning(int iterations, int ms, int direction){
+	while (iterations--){
+		for (int i=0; i<6; i++){
+			fill(0x00);
+			if (direction == CLOCKWISE){
+				setDiagonal(i);
+			}
+			else if (direction == COUNTERCLOCKWISE){
+				setDiagonal(5-i);
+			}
+			delay_ms(ms);
+		}
+	}
+}

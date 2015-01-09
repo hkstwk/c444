@@ -9,7 +9,7 @@
 
 
 // Total number of effects to loop through in main()
-int EFFECTS_TOTAL=9;
+int EFFECTS_TOTAL=10;
 unsigned char HIGH = 0x00;
 unsigned char LOW = 0xff;
 
@@ -41,7 +41,7 @@ int main (void)
 	while (1)
 	{
 		// Show the effects in a predefined order
-		for (int i=0; i<EFFECTS_TOTAL; i++)
+		for (int i=EFFECTS_TOTAL-1; i>=0; i--)
 		{
 			launch_effect(i);
 		}

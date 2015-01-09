@@ -10,6 +10,21 @@
 volatile unsigned char yplanes[] = { PLANE_Y0, PLANE_Y1, PLANE_Y2, PLANE_Y3 };
 volatile unsigned char xplanes[] = { PLANE_X0, PLANE_X1, PLANE_X2, PLANE_X3 };
 
+int spinArray[6][2] = {
+	0b00100001,
+	0b10000100,
+	0b00100010,
+	0b01000100,
+	0b01000100,
+	0b00100010,
+	0b01001000,
+	0b00010010,
+	0b11000000,
+	0b00000011,
+	0b00110000,
+	0b00001100
+};
+
 // draw.cpp
 // 9-feb-2014 Ready HKO
 // Set a single voxel to ON
@@ -803,3 +818,13 @@ void clrColumn(int x, int y)
 	}
 
 }
+
+void setDiagonal (int stepcount)
+{
+	for (int z=0;z<CUBE_SIZE;z++)
+	{
+		cube[z][0] = spinArray[stepcount][0];
+		cube[z][1] = spinArray[stepcount][1];
+	}
+}
+
