@@ -411,3 +411,34 @@ void effect_spinning(int iterations, int ms, int direction){
 		}
 	}
 }
+
+void effect_runningPlanes(int iterations, int ms, int direction){
+	while (iterations--){
+		setplane(AXIS_X,0);
+		delay_ms(ms);
+		fill(0x00);
+
+		if (direction == CLOCKWISE){
+			setplane(AXIS_Y,0);
+		}
+		else if (direction == COUNTERCLOCKWISE){
+			setplane(AXIS_Y,3);
+		}
+		delay_ms(ms);
+		fill(0x00);
+
+		setplane(AXIS_X,3);
+		delay_ms(ms);
+		fill(0x00);
+
+		if (direction == CLOCKWISE){
+			setplane(AXIS_Y,3);
+		}
+		else if (direction == COUNTERCLOCKWISE){
+			setplane(AXIS_Y,0);
+		}
+		delay_ms(ms);
+		fill(0x00);
+
+	}
+}
