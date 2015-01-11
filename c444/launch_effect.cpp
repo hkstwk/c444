@@ -109,14 +109,6 @@ void launch_effect (int effect)
       delay_ms(250);
       break;
 
-   case 9:
-	  effect_spinning(20,80,CLOCKWISE);
-      fill(0x00);
-      delay_ms(300);
-      effect_spinning(20,80,COUNTERCLOCKWISE);
-      fill(0x00);
-      break;
-
     // In case the effect number is out of range do nothing
     default:
       break;
