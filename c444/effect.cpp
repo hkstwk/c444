@@ -439,6 +439,5 @@ void effect_runningPlanes(int iterations, int ms, int direction){
 		}
 		delay_ms(ms);
 		fill(0x00);
-
 	}
 }
