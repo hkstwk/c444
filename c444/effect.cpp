@@ -235,7 +235,6 @@ void effect_test (void)
 
 void effect_sine(int iteration, int miliseconds)
 {
-    //ripples(iteration,miliseconds);
     sine(iteration,miliseconds);
 }
 

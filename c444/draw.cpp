@@ -710,37 +710,27 @@ void ripples (int iterations, int delay) {
 }
 
 void sidewaves (int iterations, int delay) {
-  fill(0x00);  // Clear cube
+	float origin_x, origin_y, distance, height, ripple_interval;
+	  int x,y,i;
 
-  float origin_x, origin_y, distance, height, ripple_interval;
-  int x,y,i;
+	  for (i = 0; i < iterations; i++) {
+	    origin_x = 3.5+sin((float)i/500)*4;
+	    origin_y = 3.5+cos((float)i/500)*4;
 
-  for (i = 0; i < iterations; i++) {
-    origin_x = 1.5+sin((float)i/500)*4;
-    origin_y = 1.5+cos((float)i/500)*4;
+	    for (x = 0; x < 4; x++) {
+	      for (y = 0; y < 4; y++) {
+	        distance = distance2d(origin_x,origin_y,x,y)/9.899495*8;
+	        ripple_interval =2;
+	        height = 4+sin(distance/ripple_interval+(float) i/50)*3.6;
 
-    for (x = 0; x < 4; x++) {
-      for (y = 0; y < 4; y++) {
-        distance = distance2d(origin_x,origin_y,x,y)/9.899495*8;
-//        ripple_interval =2; //original
-        ripple_interval =1.5;
-//        height = 4+sin(distance/ripple_interval+(float) i/50)*3.6; //original
-        height = round(4+sin(distance/ripple_interval+(float) i/50)*3.6);
+	        setvoxel(x,y,(int) height);
+	        setvoxel(x,y,(int) height);
+	      }
+	    }
 
-        setvoxel(x,y,(int) height);
-  //      setvoxel(x,y,(int) height);
-        delay_ms(delay);
-        fill(0x00);
-
-      }
-
-    }
-
-
-
-
-    fill(0x00);
-  }
+	    delay_ms(delay);
+	    fill(0x00);
+	  }
 }
 
 void spheremove (int iterations, int delay) {
