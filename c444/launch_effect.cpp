@@ -110,7 +110,7 @@ void launch_effect (int effect)
       break;
 
    case 11:
-	  effect_sidewaves(200,10);
+	  effect_sidewaves(2500,10);
       fill(0x00);
       delay_ms(250);
       break;
