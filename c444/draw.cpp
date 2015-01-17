@@ -818,3 +818,7 @@ void setDiagonal (int stepcount)
 	}
 }
 
+
+
+
+

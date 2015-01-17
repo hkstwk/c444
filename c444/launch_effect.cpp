@@ -115,6 +115,13 @@ void launch_effect (int effect)
       delay_ms(250);
       break;
 
+   case 12:
+	  effect_sinewave(100,120);
+      fill(0x00);
+      delay_ms(250);
+      break;
+
+
     // In case the effect number is out of range do nothing
     default:
       break;

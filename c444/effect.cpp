@@ -440,3 +440,36 @@ void effect_runningPlanes(int iterations, int ms, int direction){
 		fill(0x00);
 	}
 }
+
+void effect_sinewave(int iterations, int ms){
+	float z;
+	for (int direction = 0; direction < 4; direction++){
+		for (int phase=0; phase<iterations; phase++){
+			for (int x = 0; x < CUBE_SIZE; x++){
+				for (int y = 0; y < CUBE_SIZE; y++){
+					switch (direction){
+					    case 0:
+					    	z = sin(phase+y);
+					    	break;
+
+					    case 1:
+					    	z = sin(phase+x);
+					    	break;
+					    case 2:
+					    	z = sin(phase-y);
+					    	break;
+					    case 3:
+					    	z = sin(phase-x);
+					    	break;
+					    default:
+					    	break;
+					  }
+					z = round(map(z,-1,1,0,CUBE_SIZE-1));
+					setvoxel(x,y,(int) z);
+				}
+			}
+			delay_ms(ms);
+			fill(0x00);
+		}
+	}
+}

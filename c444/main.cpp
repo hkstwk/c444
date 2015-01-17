@@ -9,7 +9,7 @@
 
 
 // Total number of effects to loop through in main()
-int EFFECTS_TOTAL=12;
+int EFFECTS_TOTAL=13;
 unsigned char HIGH = 0x00;
 unsigned char LOW = 0xff;
 

@@ -35,5 +35,6 @@ void effect_sendplane_rand_z (unsigned char z, int delay, int wait);
 void effect_rotating_column(int iterations, int ms, int direction);
 void effect_spinning(int iterations, int ms, int direction);
 void effect_runningPlanes(int iterations, int ms, int direction);
+void effect_sinewave(int iterations, int ms);
 
 #endif /* EFFECT_H_ */
