@@ -121,7 +121,6 @@ void launch_effect (int effect)
       delay_ms(250);
       break;
 
-
     // In case the effect number is out of range do nothing
     default:
       break;

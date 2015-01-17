@@ -714,14 +714,14 @@ void sidewaves (int iterations, int delay) {
 	  int x,y,i;
 
 	  for (i = 0; i < iterations; i++) {
-	    origin_x = 3.5+sin((float)i/500)*4;
-	    origin_y = 3.5+cos((float)i/500)*4;
+	    origin_x = 1.5+sin((float)i/500)*4;
+	    origin_y = 1.5+cos((float)i/500)*4;
 
 	    for (x = 0; x < 4; x++) {
 	      for (y = 0; y < 4; y++) {
 	        distance = distance2d(origin_x,origin_y,x,y)/9.899495*8;
 	        ripple_interval =2;
-	        height = 4+sin(distance/ripple_interval+(float) i/50)*3.6;
+	        height = 2+sin(distance/ripple_interval+(float) i/50)*1.8;
 
 	        setvoxel(x,y,(int) height);
 	        setvoxel(x,y,(int) height);
