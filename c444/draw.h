@@ -18,6 +18,10 @@
 #define AXIS_Y 0x79
 #define AXIS_Z 0x7a
 
+#define TRANSPOSE_X0Y0 0xaa
+#define TRANSPOSE_Y0Z0 0xab
+#define TRANSPOSE_Z0X0 0xac
+
 #define PLANE_Y0 0b00001111
 #define PLANE_Y1 0b11110000
 #define PLANE_Y2 0b00001111
@@ -29,6 +33,9 @@
 #define PLANE_X3 0b10001000
 
 extern int spinArray[6][2];
+extern int transposeX0Y0[5][2];
+extern int transposeY0Z0[5][4][2];
+extern int transposeZ0X0[5][4][2];
 
 #define CLOCKWISE 0x00
 #define COUNTERCLOCKWISE 0x01
@@ -136,7 +143,7 @@ double map(double in, double inMin, double inMax, double outMin, double outMax);
 void sine (int iterations, int delay);
 void setColumn(int x, int y);
 void clrColumn(int x, int y);
-
 void setDiagonal (int step);
+void transposePlane(int direction, int delay);
 
 #endif /* DRAW_H_ */

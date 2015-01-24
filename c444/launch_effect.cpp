@@ -24,17 +24,14 @@ void launch_effect (int effect)
       break;
 
     case 1:
-      for (i=0; i<2; i++)
+      for (i=0; i<6; i++)
       {
         effect_planboing (AXIS_Z, 100);
-        effect_planboing (AXIS_Z, 100);
-        effect_planboing (AXIS_Z, 100);
+        transposePlane(TRANSPOSE_Z0X0, 100);
         effect_planboing (AXIS_X, 100);
-        effect_planboing (AXIS_X, 100);
-        effect_planboing (AXIS_X, 100);
+        transposePlane(TRANSPOSE_X0Y0, 100);
         effect_planboing (AXIS_Y, 100);
-        effect_planboing (AXIS_Y, 100);
-        effect_planboing (AXIS_Y, 100);
+        transposePlane(TRANSPOSE_Y0Z0, 100);
       }
       fill(0x00);
       delay_ms(250);
@@ -123,6 +120,10 @@ void launch_effect (int effect)
 
     // In case the effect number is out of range do nothing
     default:
+  	  effect_planboing(AXIS_X,100);
+      fill(0x00);
+      delay_ms(100);
+      transposePlane(TRANSPOSE_X0Y0,500);
       break;
   }
 }
