@@ -39,6 +39,36 @@ void initTimer1(){
  * See shift_register.h for definitions and low level functions used here.
  */
 ISR(TIMER1_COMPA_vect){
+	// map to old data structure
+	uint8_t high = (uint8_t) cube[currentLayer][1];
+	uint8_t low  = (uint8_t) cube[currentLayer][0];
+	cube444[currentLayer]  =  (((high & 0xff) << 8) | (low & 0xff));
+
+
+	// change output only if ledPins content has changed
+		ledPins = cube444[currentLayer];
+		SH_CP_low();
+		ST_CP_low();
+		for (uint16_t i=15; i<65535; i--)
+		{
+		   // type cast to uint16_t needed for (1 << i) to prevent build from comparison warning/failure
+		   // If position i of ledPins contains a 1, set Data Serial to 1. Else set Data Serial to 0.
+		   if ((ledPins & (uint16_t)(1 << i)) == (uint16_t)(1 << i))
+			 DS_high();
+		  else
+			 DS_low();
+
+		   // clock the value of Data Serial into the shift register
+		  SH_CP_high();
+		  SH_CP_low();
+		}
+
+		// latch the shift registers to output. All 16 bits are handled in one cycle.
+		ST_CP_high();
+
+//		// update previous cube layer contents
+//		previousLedPins[currentLayer] = ledPins;
+
 
 	// Rotate layer for POV (Persistence of Vision) effect
 	LAYER_PORT &= ~(1 << currentLayer); 	// 1) switch currentLayer off
@@ -49,35 +79,4 @@ ISR(TIMER1_COMPA_vect){
 		currentLayer = 0;
 	}
 	LAYER_PORT |= (1 << currentLayer);	// 3) switch (new) currentLayer on
-
-	// map to old data structure
-	uint8_t high = (uint8_t) cube[currentLayer][1];
-	uint8_t low  = (uint8_t) cube[currentLayer][0];
-	cube444[currentLayer]  =  (((high & 0xff) << 8) | (low & 0xff));
-
-
-	// change output only if ledPins content has changed
-			ledPins = cube444[currentLayer];
-			SH_CP_low();
-			ST_CP_low();
-			for (uint16_t i=15; i<65535; i--)
-			{
-			   // type cast to uint16_t needed for (1 << i) to prevent build from comparison warning/failure
-			   // If position i of ledPins contains a 1, set Data Serial to 1. Else set Data Serial to 0.
-			   if ((ledPins & (uint16_t)(1 << i)) == (uint16_t)(1 << i))
-				 DS_high();
-			  else
-				 DS_low();
-
-			   // clock the value of Data Serial into the shift register
-			  SH_CP_high();
-			  SH_CP_low();
-			}
-
-			// latch the shift registers to output. All 16 bits are handled in one cycle.
-			ST_CP_high();
-
-			// update previous cube layer contents
-			previousLedPins[currentLayer] = ledPins;
-
 }
