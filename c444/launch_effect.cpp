@@ -5,14 +5,14 @@
  *      Author: harm
  */
 
-
+#include "defines.h"
 #include "launch_effect.h"
 
 void launch_effect (int effect)
 {
   int i;
 
-  fill(0x00);
+  fill(LOW);
 
   switch (effect)
   {

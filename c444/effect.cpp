@@ -6,6 +6,7 @@
  */
 
 #include "effect.h"
+#include "defines.h"
 
 
 // Test all voxels by turning on one after the other in ascending order.
@@ -91,7 +92,7 @@ void effect_test_all_voxels_one_by_one(int miliseconds)
 // Light all leds and delay for some time
 void effect_all_leds_on(int miliseconds)
 {
-    fill(0xff);
+    fill(HIGH);
     delay_ms(miliseconds);
 }
 

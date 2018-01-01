@@ -6,6 +6,7 @@
  */
 
 #include "draw.h"
+#include "defines.h"
 
 volatile unsigned char yplanes[] = { PLANE_Y0, PLANE_Y1, PLANE_Y2, PLANE_Y3 };
 volatile unsigned char xplanes[] = { PLANE_X0, PLANE_X1, PLANE_X2, PLANE_X3 };
@@ -133,7 +134,7 @@ void fill (unsigned char pattern)
 {
 	for (int z=0;z<CUBE_SIZE;z++)
 	{
-		for (int y=0;y<CUBE_BYTES;y++)
+		for (int y=0;y<2;y++)
 		{
 			cube[z][y] = pattern;
 		}
@@ -346,7 +347,7 @@ void setplane_z (int z)
 	int i;
 	if (z>=0 && z<CUBE_SIZE)
 	{
-		for (i=0;i<CUBE_BYTES;i++)
+		for (i=0;i<2;i++)
 			cube[z][i] = 0xff;
 	}
 }
@@ -358,7 +359,7 @@ void clrplane_z (int z)
 	int i;
 	if (z>=0 && z<CUBE_SIZE)
 	{
-		for (i=0;i<CUBE_BYTES;i++)
+		for (i=0;i<2;i++)
 			cube[z][i] = 0x00;
 	}
 }

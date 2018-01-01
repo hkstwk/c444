@@ -13,8 +13,8 @@
 #include <stdlib.h>
 #include "draw.h"
 
-extern unsigned char CUBE_SIZE;
-extern unsigned char CUBE_BYTES;
+//extern unsigned char CUBE_SIZE;
+//extern volatile unsigned char CUBE_BYTES;
 extern volatile unsigned char cube[4][2];
 extern volatile unsigned char fb[4][2];
 
