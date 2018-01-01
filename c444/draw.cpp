@@ -130,14 +130,12 @@ void setvoxel(int x, int y, int z)
 // Fill a value into all 64 byts of the cube buffer
 // Mostly used for clearing: fill(0x00)
 // or setting all on: fill(0xff)
-void fill (unsigned char pattern)
+void fill (uint16_t pattern)
 {
 	for (int z=0;z<CUBE_SIZE;z++)
 	{
-		for (int y=0;y<2;y++)
-		{
-			cube[z][y] = pattern;
-		}
+		cube[z][1] = (pattern >>8);
+		cube[z][0] =  pattern;
 	}
 }
 

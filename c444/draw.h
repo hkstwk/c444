@@ -50,7 +50,7 @@ extern volatile unsigned char fb[4][2];
 void setvoxel(int x, int y, int z);
 void clrvoxel(int x, int y, int z);
 unsigned char inrange(int x, int y, int z);
-void fill(unsigned char pattern);
+void fill(uint16_t pattern);
 
 
 // 9-feb-2014 Ready HKO

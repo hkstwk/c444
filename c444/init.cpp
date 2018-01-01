@@ -28,7 +28,7 @@ void initTimer1(){
 	TCCR1B |= (1 << WGM12); 		// Clear Timer on Compare Match (CTC) mode
 	TCCR1B |= PRESCALER64; 		// Counter is updated every 64 ticks. At 16Mhz that is 250.000 updates/second
 	TIMSK1 |= (1 << OCIE1A); 	// Enable interrupt on output compare A match
-	OCR1A   = 62500;				// Refresh rate = (16MHz / 64) / 192 = 1300 Hz = call to interrupt vector
+	OCR1A   = 192;				// Refresh rate = (16MHz / 64) / 192 = 1300 Hz = call to interrupt vector
 	sei();						// Set global interrupt enable
 }
 
@@ -51,8 +51,8 @@ ISR(TIMER1_COMPA_vect){
 	LAYER_PORT |= (1 << currentLayer);	// 3) switch (new) currentLayer on
 
 	// map to old data structure
-	uint8_t high = cube[currentLayer][1];
-	uint8_t low  = cube[currentLayer][0];
+	uint8_t high = (uint8_t) cube[currentLayer][1];
+	uint8_t low  = (uint8_t) cube[currentLayer][0];
 	cube444[currentLayer]  =  (((high & 0xff) << 8) | (low & 0xff));
 
 

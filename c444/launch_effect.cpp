@@ -46,7 +46,7 @@ void launch_effect (int effect)
 
     case 3:
       effect_all_leds_on(3000);
-      fill(0x00);
+      fill(LOW);
       delay_ms(250);
       break;
 
