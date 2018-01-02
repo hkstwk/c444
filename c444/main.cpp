@@ -50,13 +50,13 @@ int main (void)
 	// Do awesome effects. Loop forever.
 	while (1)
 	{
-		fill(LOW);
+//		fill(LOW);
 		// Show the effects in a predefined order
-		for (int i=EFFECTS_TOTAL-1; i>=0; i--)
-		{
-			launch_effect(i);
-		}
-//		launch_effect(4);
+//		for (int i=EFFECTS_TOTAL-1; i>=0; i--)
+//		{
+//			launch_effect(i);
+//		}
+		launch_effect(8);
 	}
 	return 1;
 }

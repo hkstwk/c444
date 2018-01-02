@@ -84,8 +84,8 @@ void launch_effect (int effect)
 
    case 8:
 	  for (int i=0;i<10;i++){
-		  effect_rotating_column(1,40,COUNTERCLOCKWISE);
-		  effect_rotating_column(1,40,CLOCKWISE);
+		  effect_rotating_column(1,60,COUNTERCLOCKWISE);
+		  effect_rotating_column(1,60,CLOCKWISE);
 	  }
       fill(LOW);
       delay_ms(250);

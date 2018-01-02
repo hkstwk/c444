@@ -355,8 +355,8 @@ void effect_rotating_column(int iterations, int ms, int direction)
 	if (direction == CLOCKWISE) {
 		while (iterations--){
 				for (int x=0; x<CUBE_SIZE; x++){
-						setColumn(x,0);
-						delay_ms(ms);
+					setColumn(x,0);
+					delay_ms(ms);
 				}
 				for (int y=1; y<CUBE_SIZE; y++){
 					setColumn(3,y);
@@ -374,22 +374,38 @@ void effect_rotating_column(int iterations, int ms, int direction)
 	}
 	else if (direction == COUNTERCLOCKWISE){
 		while (iterations--){
-				for (int y=0; y<CUBE_SIZE; y++){
-						delay_ms(ms);
-						clrColumn(0,y);
-				}
-				for (int x=1; x<CUBE_SIZE; x++){
-					delay_ms(ms);
-					clrColumn(x,3);
-				}
-				for (int y=CUBE_SIZE-2; y>=0; y--){
-					delay_ms(ms);
-					clrColumn(3,y);
-				}
-				for (int x=CUBE_SIZE-2; x>0; x--){
-					delay_ms(ms);
-					clrColumn(x,0);
-				}
+			for (int x=0; x<CUBE_SIZE; x++){
+				clrColumn(x,0);
+				delay_ms(ms);
+			}
+			for (int y=1; y<CUBE_SIZE; y++){
+				clrColumn(3,y);
+				delay_ms(ms);
+			}
+			for (int x=CUBE_SIZE-2; x>=0; x--){
+				clrColumn(x,3);
+				delay_ms(ms);
+			}
+			for (int y=CUBE_SIZE-2; y>0; y--){
+				clrColumn(0,y);
+				delay_ms(ms);
+			}
+//				for (int y=0; y<CUBE_SIZE; y++){
+//						clrColumn(0,y);
+//						delay_ms(ms);
+//				}
+//				for (int x=1; x<CUBE_SIZE; x++){
+//					clrColumn(x,3);
+//					delay_ms(ms);
+//				}
+//				for (int y=CUBE_SIZE-2; y>=0; y--){
+//					clrColumn(3,y);
+//					delay_ms(ms);
+//				}
+//				for (int x=CUBE_SIZE-2; x>0; x--){
+//					clrColumn(x,0);
+//					delay_ms(ms);
+//				}
 		}
 	}
 }
