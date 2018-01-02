@@ -56,7 +56,7 @@ int main (void)
 //		{
 //			launch_effect(i);
 //		}
-		launch_effect(8);
+		launch_effect(12);
 	}
 	return 1;
 }

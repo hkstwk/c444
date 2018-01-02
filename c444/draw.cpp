@@ -128,7 +128,7 @@ void setvoxel(int x, int y, int z)
 
 // 9-feb-2014 Ready HKO
 // Fill a value into all 64 byts of the cube buffer
-// Mostly used for clearing: fill(0x00)
+// Mostly used for clearing: fill(LOW)
 // or setting all on: fill(0xff)
 void fill (uint16_t pattern)
 {
@@ -734,7 +734,7 @@ void sine(int iterations, int delay) {
 	float z;
 	int x,y,phase;
 
-	fill(0x00);  // Clear cube
+	fill(LOW);  // Clear cube
 
 	for (phase = 0; phase < iterations; phase++)
 	{
@@ -748,14 +748,14 @@ void sine(int iterations, int delay) {
 		  }
 		}
 		delay_ms(delay);
-		fill(0x00);  // Clear cube
+		fill(LOW);  // Clear cube
 	}
 }
 
 
 // Display a sine wave running out from the center of the cube.
 void ripples (int iterations, int delay) {
-	fill(0x00);  // Clear cube
+	fill(LOW);  // Clear cube
 
 	float distance, height, ripple_interval;
 	int x,y,i;
@@ -773,7 +773,7 @@ void ripples (int iterations, int delay) {
 	  }
 	}
 	//delay_ms(delay);
-	fill(0x00);  // Clear cube
+	fill(LOW);  // Clear cube
 	}
 }
 
@@ -788,21 +788,20 @@ void sidewaves (int iterations, int delay) {
 	    for (x = 0; x < 4; x++) {
 	      for (y = 0; y < 4; y++) {
 	        distance = distance2d(origin_x,origin_y,x,y)/9.899495*8;
-	        ripple_interval =2;
+	        ripple_interval =1;
 	        height = 2+sin(distance/ripple_interval+(float) i/50)*1.8;
 
 	        setvoxel(x,y,(int) height);
 	        setvoxel(x,y,(int) height);
 	      }
 	    }
-
-	    delay_ms(delay);
-	    fill(0x00);
+//		delay_ms(2);
+	    fill(LOW);
 	  }
 }
 
 void spheremove (int iterations, int delay) {
-  fill(0x00);  // Clear cube
+  fill(LOW);  // Clear cube
 
   float origin_x, origin_y, origin_z, distance, diameter;
 
@@ -833,7 +832,7 @@ void spheremove (int iterations, int delay) {
     }
 
     delay_ms(delay);
-    fill(0x00);
+    fill(LOW);
   }
 }
 
@@ -904,7 +903,7 @@ void transposePlane(int direction, int delay){
 			}
 		}
 		delay_ms(delay);
-		fill(0x00);
+		fill(LOW);
 	}
 }
 
