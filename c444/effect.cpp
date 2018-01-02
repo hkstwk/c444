@@ -45,7 +45,7 @@ void effect_box_woopwoop (int delay, int grow)
 {
 	int i,ii;
 
-	fill(0x00);
+	fill(LOW);
 	for (i=0;i<2;i++)
 	{
         ii = i;
@@ -54,7 +54,7 @@ void effect_box_woopwoop (int delay, int grow)
 
 		box_wireframe(2+ii,2+ii,2+ii,1-ii,1-ii,1-ii);
 		delay_ms(delay);
-		fill(0x00);
+		fill(LOW);
 	}
 }
 
@@ -64,14 +64,14 @@ void effect_planboing (int plane, int miliseconds)
   int i;
   for (i=0;i<CUBE_SIZE;i++)
   {
-    fill(0x00);
+    fill(LOW);
     setplane(plane, i);
     delay_ms(miliseconds);
   }
 
   for (i=CUBE_SIZE-1;i>=0;i--)
   {
-   fill(0x00);
+   fill(LOW);
    setplane(plane,i);
    delay_ms(miliseconds);
   }
@@ -102,94 +102,94 @@ void effect_wireframe_box(int iterations, int miliseconds)
     // Full box downn to origin (0,0,0)
     box_wireframe(0,0,0,3,3,3);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(0,0,0,2,2,2);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(0,0,0,1,1,1);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(0,0,0,0,0,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(0,0,0,1,1,1);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(0,0,0,2,2,2);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(0,0,0,3,3,3);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
 
-    // Full box downn to (x,y,z) = (3,0,0)
+    // Full box down to (x,y,z) = (3,0,0)
     box_wireframe(0,3,3,3,0,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(1,2,2,3,0,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(2,1,1,3,0,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(3,0,0,3,0,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(2,1,1,3,0,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(1,2,2,3,0,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(0,3,3,3,0,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
 
     // Full box downn to (x,y,z) = (3,3,0)
     box_wireframe(0,0,3,3,3,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(1,1,2,3,3,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(2,2,1,3,3,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(3,3,0,3,3,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(2,2,1,3,3,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(1,1,2,3,3,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(0,0,3,3,3,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
 
     // Full box downn to (x,y,z) = (0,3,0)
     box_wireframe(3,0,3,0,3,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(2,1,2,0,3,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(1,2,1,0,3,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(0,3,0,0,3,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(1,2,1,0,3,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(2,1,2,0,3,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
     box_wireframe(3,0,3,0,3,0);
     delay_ms(miliseconds);
-    fill(0x00);
+    fill(LOW);
 }
 
 void effect_rain (int iterations)
@@ -198,10 +198,15 @@ void effect_rain (int iterations)
 	int rnd_x;
 	int rnd_y;
 	int rnd_num;
+	int rnd_num_prev;
 
 	for (ii=0;ii<iterations;ii++)
 	{
-		rnd_num = rand()%4;
+		while (rnd_num == rnd_num_prev){
+			rnd_num = rand()%4;
+		}
+		rnd_num_prev = rnd_num;
+
 
 		for (i=0; i < rnd_num;i++)
 		{
@@ -229,7 +234,7 @@ void effect_test (void)
 		setvoxel(x,y,z);
 		setvoxel(x,y,z);
 		delay_ms(200);
-		fill(0x00);
+		fill(LOW);
 	}
 
 }
@@ -276,7 +281,7 @@ void effect_sendvoxels_rand_z (int iterations, int delay, int wait)
 {
 	unsigned char x, y, last_x = 0, last_y = 0, i;
 
-	fill(0x00);
+	fill(LOW);
 
 	// Loop through all the X and Y coordinates
 	for (x=0;x<4;x++)
@@ -325,7 +330,7 @@ void effect_sendplane_rand_z (unsigned char z, int delay, int wait)
 	unsigned char loop = 16;
 	unsigned char x, y;
 
-	fill(0x00);
+	fill(LOW);
 
 	setplane_z(z);
 
@@ -352,44 +357,36 @@ void effect_rotating_column(int iterations, int ms, int direction)
 				for (int x=0; x<CUBE_SIZE; x++){
 						setColumn(x,0);
 						delay_ms(ms);
-						clrColumn(x,0);
 				}
 				for (int y=1; y<CUBE_SIZE; y++){
 					setColumn(3,y);
 					delay_ms(ms);
-					clrColumn(3,y);
 				}
 				for (int x=CUBE_SIZE-2; x>=0; x--){
 					setColumn(x,3);
 					delay_ms(ms);
-					clrColumn(x,3);
 				}
 				for (int y=CUBE_SIZE-2; y>0; y--){
 					setColumn(0,y);
 					delay_ms(ms);
-					clrColumn(0,y);
 				}
 		}
 	}
 	else if (direction == COUNTERCLOCKWISE){
 		while (iterations--){
 				for (int y=0; y<CUBE_SIZE; y++){
-						setColumn(0,y);
 						delay_ms(ms);
 						clrColumn(0,y);
 				}
 				for (int x=1; x<CUBE_SIZE; x++){
-					setColumn(x,3);
 					delay_ms(ms);
 					clrColumn(x,3);
 				}
 				for (int y=CUBE_SIZE-2; y>=0; y--){
-					setColumn(3,y);
 					delay_ms(ms);
 					clrColumn(3,y);
 				}
 				for (int x=CUBE_SIZE-2; x>0; x--){
-					setColumn(x,0);
 					delay_ms(ms);
 					clrColumn(x,0);
 				}
@@ -400,7 +397,7 @@ void effect_rotating_column(int iterations, int ms, int direction)
 void effect_spinning(int iterations, int ms, int direction){
 	while (iterations--){
 		for (int i=0; i<6; i++){
-			fill(0x00);
+			fill(LOW);
 			if (direction == CLOCKWISE){
 				setDiagonal(i);
 			}
@@ -416,7 +413,7 @@ void effect_runningPlanes(int iterations, int ms, int direction){
 	while (iterations--){
 		setplane(AXIS_X,0);
 		delay_ms(ms);
-		fill(0x00);
+		fill(LOW);
 
 		if (direction == CLOCKWISE){
 			setplane(AXIS_Y,0);
@@ -425,11 +422,11 @@ void effect_runningPlanes(int iterations, int ms, int direction){
 			setplane(AXIS_Y,3);
 		}
 		delay_ms(ms);
-		fill(0x00);
+		fill(LOW);
 
 		setplane(AXIS_X,3);
 		delay_ms(ms);
-		fill(0x00);
+		fill(LOW);
 
 		if (direction == CLOCKWISE){
 			setplane(AXIS_Y,3);
@@ -438,7 +435,7 @@ void effect_runningPlanes(int iterations, int ms, int direction){
 			setplane(AXIS_Y,0);
 		}
 		delay_ms(ms);
-		fill(0x00);
+		fill(LOW);
 	}
 }
 
@@ -470,7 +467,7 @@ void effect_sinewave(int iterations, int ms){
 				}
 			}
 			delay_ms(ms);
-			fill(0x00);
+			fill(LOW);
 		}
 	}
 }

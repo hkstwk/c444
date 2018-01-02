@@ -19,7 +19,7 @@ void launch_effect (int effect)
     // plane boing effect
     case 0:
       effect_sine(75,150);
-      fill(0x00);
+      fill(LOW);
       delay_ms(250);
       break;
 
@@ -33,7 +33,7 @@ void launch_effect (int effect)
         effect_planboing (AXIS_Y, 100);
         transposePlane(TRANSPOSE_Y0Z0, 100);
       }
-      fill(0x00);
+      fill(LOW);
       delay_ms(250);
       break;
 
@@ -41,7 +41,7 @@ void launch_effect (int effect)
     case 2:
       effect_test_all_voxels(20,2000);
       delay_ms(250);
-      fill(0x00);
+      fill(LOW);
       break;
 
     case 3:
@@ -61,67 +61,67 @@ void launch_effect (int effect)
 		  effect_box_woopwoop(200,1);
       }
       delay_ms(250);
-      fill(0x00);
+      fill(LOW);
       break;
 
     case 5:
-      effect_sendvoxels_rand_z(100,50,200); // parameters: (int iterations, int delay, int wait)
-      fill(0x00);
+      effect_sendvoxels_rand_z(100,25,150); // parameters: (int iterations, int delay, int wait)
+      fill(LOW);
       delay_ms(250);
       break;
 
     case 6:
       effect_rain(200);
-      fill(0x00);
+      fill(LOW);
       delay_ms(250);
       break;
 
     case 7:
-  	  effect_sendplane_rand_z(3,100,200); // parameters:  (unsigned char z, int delay, int wait)
-      fill(0x00);
+  	  effect_sendplane_rand_z(3,35,50); // parameters:  (unsigned char z, int delay, int wait)
+      fill(LOW);
       delay_ms(250);
       break;
 
    case 8:
 	  for (int i=0;i<10;i++){
-		  effect_rotating_column(1,80,COUNTERCLOCKWISE);
-		  effect_rotating_column(1,80,CLOCKWISE);
+		  effect_rotating_column(1,40,COUNTERCLOCKWISE);
+		  effect_rotating_column(1,40,CLOCKWISE);
 	  }
-      fill(0x00);
+      fill(LOW);
       delay_ms(250);
       break;
 
    case 9:
 	  effect_spinning(20,80,CLOCKWISE);
-      fill(0x00);
+      fill(LOW);
       delay_ms(250);
       effect_spinning(20,80,COUNTERCLOCKWISE);
-      fill(0x00);
+      fill(LOW);
       delay_ms(250);
       break;
 
    case 10:
 	  effect_runningPlanes(10,140,rand()%2);
-      fill(0x00);
+      fill(LOW);
       delay_ms(250);
       break;
 
    case 11:
 	  effect_sidewaves(2500,10);
-      fill(0x00);
+      fill(LOW);
       delay_ms(250);
       break;
 
    case 12:
 	  effect_sinewave(100,120);
-      fill(0x00);
+      fill(LOW);
       delay_ms(250);
       break;
 
     // In case the effect number is out of range do nothing
     default:
   	  effect_planboing(AXIS_X,100);
-      fill(0x00);
+      fill(LOW);
       delay_ms(100);
       transposePlane(TRANSPOSE_X0Y0,500);
       break;

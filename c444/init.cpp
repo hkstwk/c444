@@ -28,7 +28,7 @@ void initTimer1(){
 	TCCR1B |= (1 << WGM12); 		// Clear Timer on Compare Match (CTC) mode
 	TCCR1B |= PRESCALER64; 		// Counter is updated every 64 ticks. At 16Mhz that is 250.000 updates/second
 	TIMSK1 |= (1 << OCIE1A); 	// Enable interrupt on output compare A match
-	OCR1A   = 192;				// Refresh rate = (16MHz / 64) / 192 = 1300 Hz = call to interrupt vector
+	OCR1A   = 384;				// Refresh rate = (16MHz / 64) / 384 = 651 Hz = ISR calls per second
 	sei();						// Set global interrupt enable
 }
 
@@ -39,6 +39,15 @@ void initTimer1(){
  * See shift_register.h for definitions and low level functions used here.
  */
 ISR(TIMER1_COMPA_vect){
+	// Rotate layer for POV (Persistence of Vision) effect
+	LAYER_PORT &= ~(1 << currentLayer); 	// 1) switch currentLayer off
+	if (currentLayer < (CUBE_SIZE-1)){ 	// 2) increment currentLayer or reset to 0
+		currentLayer++;
+	}
+	else{
+		currentLayer = 0;
+	}
+
 	// map to old data structure
 	uint8_t high = (uint8_t) cube[currentLayer][1];
 	uint8_t low  = (uint8_t) cube[currentLayer][0];
@@ -70,13 +79,6 @@ ISR(TIMER1_COMPA_vect){
 //		previousLedPins[currentLayer] = ledPins;
 
 
-	// Rotate layer for POV (Persistence of Vision) effect
-	LAYER_PORT &= ~(1 << currentLayer); 	// 1) switch currentLayer off
-	if (currentLayer < (CUBE_SIZE-1)){ 	// 2) increment currentLayer or reset to 0
-		currentLayer++;
-	}
-	else{
-		currentLayer = 0;
-	}
+
 	LAYER_PORT |= (1 << currentLayer);	// 3) switch (new) currentLayer on
 }

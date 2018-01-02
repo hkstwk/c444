@@ -18,8 +18,8 @@
 #define CUBE_SIZE		4		// dimension of cube
 #define EFFECTS_TOTAL	13		// number of animations
 
-#define HIGH				0b0000111111111111		// 16 bits on
-#define LOW				0x00		// 16 bits off
+#define HIGH				0xFFFF		// 16 bits on
+#define LOW				0x0000		// 16 bits off
 #define BIT(x)	(1 << (x)) 		// BIT(x) is used to set the bit position
 
 #define LAYER_PORT	PORTB
