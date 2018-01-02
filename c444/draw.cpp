@@ -127,9 +127,9 @@ void setvoxel(int x, int y, int z)
 }
 
 // 9-feb-2014 Ready HKO
-// Fill a value into all 64 byts of the cube buffer
+// Fill a value into all 16 bits of the cube buffer
 // Mostly used for clearing: fill(LOW)
-// or setting all on: fill(0xff)
+// or setting all on: fill(HIGH)
 void fill (uint16_t pattern)
 {
 	for (int z=0;z<CUBE_SIZE;z++)

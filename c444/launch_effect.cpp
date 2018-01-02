@@ -18,7 +18,7 @@ void launch_effect (int effect)
   {
     // plane boing effect
     case 0:
-      effect_sine(75,150);
+      effect_sine(75,125);
       fill(LOW);
       delay_ms(250);
       break;
@@ -51,14 +51,14 @@ void launch_effect (int effect)
       break;
 
     case 4:
-      effect_wireframe_box(100,150);
+      effect_wireframe_box(100,100);
       delay_ms(500);
       for (int i=0; i<3; i++)
       {
-		  effect_box_woopwoop(200,0);
-		  effect_box_woopwoop(200,1);
-		  effect_box_woopwoop(200,0);
-		  effect_box_woopwoop(200,1);
+		  effect_box_woopwoop(175,0);
+		  effect_box_woopwoop(175,1);
+		  effect_box_woopwoop(175,0);
+		  effect_box_woopwoop(175,1);
       }
       delay_ms(250);
       fill(LOW);

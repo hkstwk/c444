@@ -52,11 +52,11 @@ int main (void)
 	{
 		fill(LOW);
 		// Show the effects in a predefined order
-//		for (int i=EFFECTS_TOTAL-1; i>=0; i--)
-//		{
-//			launch_effect(i);
-//		}
-		launch_effect(12);
+		for (int i=EFFECTS_TOTAL-1; i>=0; i--)
+		{
+			launch_effect(i);
+		}
+//		launch_effect(4);
 	}
 	return 1;
 }
