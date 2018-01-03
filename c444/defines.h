@@ -22,11 +22,14 @@
 #define LOW				0x0000		// 16 bits off
 #define BIT(x)	(1 << (x)) 		// BIT(x) is used to set the bit position
 
-#define LAYER_PORT	PORTB
-#define LAYER_DDR	DDRB
-#define LAYER0		PB0
-#define LAYER1		PB1
-#define LAYER2		PB2
-#define LAYER3		PB3
+#define LAYER_PORT		PORTB
+#define LAYER_DDR		DDRB
+#define LAYER0			PB0
+#define LAYER1			PB1
+#define LAYER2			PB2
+#define LAYER3			PB3
+
+#define AVR_MODE			1
+#define SERIAL_MODE		0
 
 #endif /* DEFINES_H_ */

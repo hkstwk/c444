@@ -33,6 +33,10 @@ volatile unsigned char cube[4][2];
 volatile unsigned char fb[4][2];
 volatile uint16_t cube444[4];
 
+// Mode of operation: SERIAL_MODE or AVR_MODE
+// Button on PD4 is used to switch between mode
+volatile unsigned char mode;
+
 
 // Main loop
 int main (void)
@@ -54,18 +58,25 @@ int main (void)
 	initUSART();
 	printString("Hello world!\r\n");
 
+	// Set Mode of Operation.
+	mode = SERIAL_MODE;
+
 	// Do awesome effects. Loop forever.
 	while (1)
 	{
-		serialCharacter = receiveByte();
-		transmitByte(serialCharacter);
+		if (mode == SERIAL_MODE){
+			serialCharacter = receiveByte();
+			printBinaryByte(serialCharacter);
+		}
 
-		// Show the effects in a predefined order
-//		for (int i=EFFECTS_TOTAL-1; i>=0; i--)
-//		{
-//			launch_effect(i);
-//		}
-		launch_effect(0);
+		else{ // Must be AVR_MODE
+			//Show the effects in a predefined order
+	//		for (int i=EFFECTS_TOTAL-1; i>=0; i--)
+	//		{
+	//			launch_effect(i);
+	//		}
+			launch_effect(0);
+		}
 	}
 	return 1;
 }
