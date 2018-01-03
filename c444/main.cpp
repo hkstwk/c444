@@ -18,6 +18,8 @@
 #include "effect.h"
 #include "launch_effect.h"
 
+#include "USART.h"
+
 // 16-bits storage for anode side of the leds. I use a two byte unsigned integer type to do the job
 volatile uint16_t ledPins;
 volatile uint16_t previousLedPins;
@@ -47,16 +49,23 @@ int main (void)
 	ioinit();
 	initTimer1();
 
+	// Serial Communication setup
+	char serialCharacter;
+	initUSART();
+	printString("Hello world!\r\n");
+
 	// Do awesome effects. Loop forever.
 	while (1)
 	{
-//		fill(LOW);
+		serialCharacter = receiveByte();
+		transmitByte(serialCharacter);
+
 		// Show the effects in a predefined order
-		for (int i=EFFECTS_TOTAL-1; i>=0; i--)
-		{
-			launch_effect(i);
-		}
-//		launch_effect(8);
+//		for (int i=EFFECTS_TOTAL-1; i>=0; i--)
+//		{
+//			launch_effect(i);
+//		}
+		launch_effect(0);
 	}
 	return 1;
 }
