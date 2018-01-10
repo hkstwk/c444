@@ -36,6 +36,7 @@ volatile uint16_t cube444[4];
 // Mode of operation: SERIAL_MODE or AVR_MODE
 // Button on PD4 is used to switch between mode
 volatile unsigned char mode;
+volatile unsigned char last_mode;
 
 // NEW functionality for button toggling between AVR and SERIAL mode
 #define BUTTON_PORT	PORTD
@@ -58,10 +59,11 @@ void initInterrupt0(void){
 
 ISR(INT0_vect){
 	if (bit_is_clear(PIND,BUTTON)){
-		BUTTON_PORT &= ~(1 << AVR_LED);
-	}
-	else {
-		BUTTON_PORT |= (1 << AVR_LED);
+		BUTTON_PORT ^= (1 << AVR_LED);
+		if (mode == AVR_MODE)
+			mode = SERIAL_MODE;
+		else
+			mode = AVR_MODE;
 	}
 }
 
@@ -90,6 +92,7 @@ int main (void)
 
 	// Set Mode of Operation.
 	mode = AVR_MODE;
+	last_mode = SERIAL_MODE;
 
 	// Do awesome effects. Loop forever.
 	while (1)
@@ -101,11 +104,11 @@ int main (void)
 
 		else{ // Must be AVR_MODE
 			//Show the effects in a predefined order
-			for (int i=EFFECTS_TOTAL-1; i>=0; i--)
-			{
-				launch_effect(i);
-			}
-//			launch_effect(0);
+//			for (int i=EFFECTS_TOTAL-1; i>=0; i--)
+//			{
+//				launch_effect(i);
+//			}
+			launch_effect(0);
 		}
 	}
 	return 1;

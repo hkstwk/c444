@@ -29,7 +29,7 @@
 #define LAYER2			PB2
 #define LAYER3			PB3
 
-#define AVR_MODE			1
-#define SERIAL_MODE		0
+#define AVR_MODE			(1 << 0)
+#define SERIAL_MODE		((1 << 0) & ~(1 << 0))
 
 #endif /* DEFINES_H_ */
