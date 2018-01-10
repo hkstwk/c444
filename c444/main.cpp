@@ -37,6 +37,20 @@ volatile uint16_t cube444[4];
 // Button on PD4 is used to switch between mode
 volatile unsigned char mode;
 
+// NEW functionality for button toggling between AVR and SERIAL mode
+#define BUTTON_PORT	PORTD
+#define BUTTON_DDR	DDRD
+#define BUTTON		PD3
+#define AVR_LED		PD5
+
+void initButton(){
+	uint8_t buttonWasPressed = 0;
+	BUTTON_DDR  &= ~(1 << BUTTON); // Set button pin to input by clearing the bit. Safety precaution
+	BUTTON_PORT |=  (1 << BUTTON); // enable pull up resistor for button input pin
+	BUTTON_DDR  |=  (1 << AVR_LED); // Set AVR_LED pin to OUTPUT by clearing the bit.
+	BUTTON_PORT |=  (1 << AVR_LED);
+}
+
 
 // Main loop
 int main (void)
@@ -52,6 +66,7 @@ int main (void)
 	// This function initiates IO ports, timers and interrupts
 	ioinit();
 	initTimer1();
+	initButton();
 
 	// Serial Communication setup
 	char serialCharacter;
