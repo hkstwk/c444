@@ -104,11 +104,11 @@ int main (void)
 
 		else{ // Must be AVR_MODE
 			//Show the effects in a predefined order
-//			for (int i=EFFECTS_TOTAL-1; i>=0; i--)
-//			{
-//				launch_effect(i);
-//			}
-			launch_effect(0);
+			for (int i=EFFECTS_TOTAL-1; i>=0; i--)
+			{
+				launch_effect(i);
+			}
+//			launch_effect(0);
 		}
 	}
 	return 1;
