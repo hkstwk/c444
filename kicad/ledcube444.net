@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source "/Users/harm/Dropbox/Electronics/Kicad projects/ledcube444/ledcube444.sch")
-    (date "Sunday, 11 February 2018 'pmt' 21:28:04")
+    (date "Sunday, 11 February 2018 'pmt' 21:38:17")
     (tool "Eeschema 4.0.7")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -22,6 +22,7 @@
       (tstamp 5A741846))
     (comp (ref R1)
       (value 220)
+      (footprint Resistors_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P1.90mm_Vertical)
       (libsource (lib device) (part R))
       (sheetpath (names /) (tstamps /))
       (tstamp 5A74C0B9))
